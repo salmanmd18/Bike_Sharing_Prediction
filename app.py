@@ -24,7 +24,7 @@ SHARING_DATA_KEY = "sharing_data"
 MEDIAN_SHARING_VALUE_KEY = "median_share_value"
 
 
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/predict', methods=[ 'POST'])
 def predict():
     try:
        
