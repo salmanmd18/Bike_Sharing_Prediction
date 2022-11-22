@@ -1,6 +1,6 @@
 import sys,pip,os,json
 import pandas as pd
-#from matplotlib.style import context
+from matplotlib.style import context
 from flask import Flask,send_file, abort, render_template, request,url_for
 #from sharing.logger import logging
 from sharing.exception import SharingException
@@ -24,14 +24,25 @@ SHARING_DATA_KEY = "sharing_data"
 MEDIAN_SHARING_VALUE_KEY = "median_share_value"
 
 
-@app.route('/predict', methods=[ 'POST'])
+
+# @app.route('/', methods=['POST','GET'])
+# def index():
+#     try:
+#         return render_template("predict.html")
+#     except Exception as e:
+#         return str(e)
+
+
+
+
+@app.route('/', methods=['POST','GET'])
 def predict():
     try:
        
         context = {
         SHARING_DATA_KEY: None,
         MEDIAN_SHARING_VALUE_KEY: None
-    }
+        }
 
         if request.method == 'POST':
             season = int(request.form['season'])
@@ -60,7 +71,7 @@ def predict():
         return render_template("predict.html", context=context)
     
     except Exception as e:
-            raise SharingException(e, sys) from e
+        raise SharingException(e, sys) from e
 
 
 
