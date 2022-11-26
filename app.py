@@ -25,17 +25,17 @@ MEDIAN_SHARING_VALUE_KEY = "median_share_value"
 
 
 
-# @app.route('/', methods=['POST','GET'])
-# def index():
-#     try:
-#         return render_template("predict.html")
-#     except Exception as e:
-#         return str(e)
+@app.route('/', methods=['GET','POST'])
+def index():
+    try:
+        return render_template("predict.html",context = context)
+    except Exception as e:
+        return str(e)
 
 
 
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/predict', methods=['GET','POST'])
 def predict():
     try:
        
